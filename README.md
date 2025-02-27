@@ -1,4 +1,5 @@
 # MATLAB MCP Server
+[![smithery badge](https://smithery.ai/badge/@WilliamCloudQi/matlab-mcp-server)](https://smithery.ai/server/@WilliamCloudQi/matlab-mcp-server)
 ![GitHub Logo](https://github.com/WilliamCloudQi/matlab-mcp-server/blob/main/-------matlab-mcp-----.png)
 
 A powerful MCP server that integrates MATLAB with  AI, allowing you to execute MATLAB code, generate MATLAB scripts from natural language descriptions, and access MATLAB documentation directly through your AI assistant.
@@ -43,6 +44,14 @@ npm run watch
 - Node.js (v14 or higher)
 
 ## Installation
+
+### Installing via Smithery
+
+To install MATLAB MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@WilliamCloudQi/matlab-mcp-server):
+
+```bash
+npx -y @smithery/cli install @WilliamCloudQi/matlab-mcp-server --client claude
+```
 
 ### 1. Install the package
 
