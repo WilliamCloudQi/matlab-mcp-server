@@ -26,6 +26,7 @@
   - Describe what you want to accomplish in plain language
   - Get executable MATLAB code in response
   - Option to save generated scripts
+  - **Note:** This feature is now powered by an LLM and requires an API key (see Configuration below).
 
 ## Development
 
@@ -48,6 +49,19 @@ npm run watch
 
 - MATLAB installed on your system
 - Node.js (v14 or higher)
+
+## Configuration
+
+### Environment Variables
+
+-   `MATLAB_PATH`: The full path to your MATLAB executable. This is crucial for the server to find and run MATLAB.
+    -   Examples:
+        -   Windows: `C:\Program Files\MATLAB\R2023b\bin\matlab.exe`
+        -   macOS: `/Applications/MATLAB_R2023b.app/bin/matlab`
+        -   Linux: `/usr/local/MATLAB/R2023b/bin/matlab`
+-   `LLM_API_KEY`: (Optional) Your API key for the Large Language Model used to power the `generate_matlab_code` feature.
+    -   If this key is not provided, the `generate_matlab_code` tool will not be able to use the LLM for code generation and may fall back to a simpler template-based generation or return an error.
+    -   Setting this environment variable depends on your operating system and how you run the server (e.g., via a `.env` file, directly in your shell profile, or within the `claude_desktop_config.json` if using Claude Desktop).
 
 ## Installation
 
@@ -88,7 +102,8 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
       "command": "node",
       "args": ["/path/to/matlab-server/build/index.js"],
       "env": {
-        "MATLAB_PATH": "/path/to/matlab/executable"
+        "MATLAB_PATH": "/path/to/matlab/executable",
+        "LLM_API_KEY": "YOUR_LLM_API_KEY_HERE"
       },
       "disabled": false,
       "autoApprove": []

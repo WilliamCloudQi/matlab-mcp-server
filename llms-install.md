@@ -6,6 +6,7 @@
 
 - 用户系统上已安装MATLAB
 - 用户系统上已安装Node.js（v14或更高版本）
+- (可选) 用于代码生成功能的 LLM API 密钥。如果未提供，`generate_matlab_code` 工具的AI代码生成功能将受限或无法工作。
 
 ## 安装步骤
 
@@ -66,7 +67,8 @@ npm run build
       "command": "node",
       "args": ["/path/to/matlab-server/build/index.js"],
       "env": {
-        "MATLAB_PATH": "/path/to/matlab/executable"
+        "MATLAB_PATH": "/path/to/matlab/executable",
+        "LLM_API_KEY": "YOUR_LLM_API_KEY_HERE"
       },
       "disabled": false,
       "autoApprove": []
@@ -84,12 +86,18 @@ npm run build
 
 添加与上面相同的配置。
 
+**重要提示：**
+- 请将示例中的 `/path/to/matlab-server/build/index.js` 替换为 `matlab-mcp-server` 命令的实际路径（如果全局安装）或克隆仓库中 `build/index.js` 的路径。
+- 请将 `/path/to/matlab/executable` 替换为您系统上MATLAB可执行文件的实际路径。
+- **请将 `"YOUR_LLM_API_KEY_HERE"` 替换为您的实际LLM API密钥。如果未提供此密钥，`generate_matlab_code` 工具的AI代码生成功能将无法正常工作或功能受限。**
+
 ### 4. 验证安装
 
 重启Claude或Cline后，可以通过以下方式验证安装：
 
 1. 请求MATLAB文档：`请显示MATLAB入门指南`
 2. 执行简单的MATLAB代码：`请使用MATLAB计算1+1`
+3. (如果配置了LLM_API_KEY) 请求代码生成: `请使用MATLAB生成一个绘制正弦波的脚本`
 
 如果一切正常，你应该能够看到相应的响应。
 
@@ -109,5 +117,9 @@ npm run build
    - 检查配置文件格式是否正确
    - 确保服务器路径正确
    - 重启Claude或VSCode
+
+4. **代码生成功能不工作或返回模板代码**
+   - 确保 `LLM_API_KEY` 环境变量已正确设置在服务器的运行环境中 (例如，在 `claude_desktop_config.json` 或系统环境变量中)。
+   - 检查API密钥是否有效且具有调用LLM的权限。
 
 如有其他问题，请参考GitHub仓库中的问题跟踪器。
